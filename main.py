@@ -107,21 +107,95 @@ def marks_evaluator():
 ### 4. `TaskManager`
 # Create a class `Task` with task name and status. Create 3 task objects. Write a method `mark_done()` to set the status as `"Done"` and print the updated task.
 class Task:
-    def __init__ (self, taskName, status="Pending"):
+    def __init__(self, taskName, status = "Pending"):
         self.taskName = taskName
         self.status = status
-    
     def mark_done(self):
         self.status = "Done"
-        print(f"Task `{self.taskName}` updated to {self.status}")
+        return f"{self.taskName} updated status to {self.status}"
+task1 = Task("Go for walk")
+task2 = Task("Go for a run.")
+task3 = Task("Go to gym")
 
-task1 = Task("Buy Pens")
-task2 = Task("Dog Walk")
-task3 = Task("Go for a run")
-print(task1.taskName, "-", task1.status)
+# print(f"{task1.taskName} has status {task1.status}")
+# print(f" {task1.mark_done()}")
 
-task1.mark_done()
+### 5. `CartItem`
+# Create a class `CartItem` with name, price, and quantity. Add a method `get_total_price()` that returns price × quantity.
+class CartItem:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+    def get_total_price(self):
+        totalPrice = self.price * self.quantity
+        return totalPrice
+cartItem1 = CartItem("Candy", 10, 4)
+print(f"{cartItem1.name} price is {cartItem1.price} with {cartItem1.quantity} quantity. Total Price: {cartItem1.get_total_price()}")
 
+
+### 6. `UserProfile`
+
+# Write a class `User` that accepts `name` and `email`. Add a method `update_email(new_email)` that updates the user's email.
+class User:
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
+    def update_email(self, new_email):
+        self.email = new_email
+        return f"{self.name} has updated his email to {self.email}"
+
+user1 = User("Donovan", "don@gmail.com")
+# print(f"{user1.name} email ID: {user1.email}")
+# print(f"{user1.update_email("donovan@gmail.com")}")
+
+### 7. `GymProgress`
+# Create a `GymMember` class with attributes: `name`, `sessions_attended`, `goal`. Add method `progress()` that prints how many sessions are left to reach the goal.
+class GymMember:
+    def __init__(self, name, sessions_attended, goal):
+        self.name = name
+        self.sessions_attended = sessions_attended
+        self.goal = goal
+    def progress(self):
+        sessions_remaining = self.goal - self.sessions_attended
+        return f"Sessions Remaining: {sessions_remaining} to Reach the Goal: {self.goal}"
+gymMember1 = GymMember("Dwayne", 50, 100)
+gymMember2 = GymMember("Dwayne", 300, 500)
+# print(f"{gymMember1.progress()}")
+# print(f"{gymMember2.progress()}")
+
+### 8. `RestaurantBill`
+# Create a `Bill` class with food_item, price, and tip. Add method `final_amount()` that returns price + tip.
+class Bill:
+    def __init__(self, food_item, price, tip):
+        self.food_item = food_item
+        self.price = price
+        self.tip = tip
+    def final_amount(self):
+        total_amount = self.price + self.tip
+        return f"Total bill amount: {total_amount}"
+bill1 = Bill("Curry", 200, 20)
+bill2 = Bill("Sugar", 400, 50)
+# print(f"{bill1.final_amount()}")
+# print(f"{bill2.final_amount()}")
+
+### 9.  `InvoiceGenerator`
+# Create a class `Invoice` with `customer_name`, `items`, and `total_amount`. Add a method `generate_receipt()` that prints a bill-like structure.
+class Invoice:
+    def __init__(self, customer_name, items, total_amount):
+        self.customer_name = customer_name
+        self.items = items
+        self.total_amount = total_amount
+    def generate_receipt(self):
+        receipt = "===== Invoice =====\n"
+        receipt += f"Customer: {self.customer_name}\n"
+        receipt += f"Items: {self.items}\n"
+        receipt += f"Total Amount: ${self.total_amount}\n"
+        receipt += "=============================="
+        return receipt
+        
+invoice1 = Invoice("Donovan", "Daal", 400)
+print(f"{invoice1.generate_receipt()}")
 
 
 
