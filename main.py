@@ -197,6 +197,84 @@ class Invoice:
 invoice1 = Invoice("Donovan", "Daal", 400)
 print(f"{invoice1.generate_receipt()}")
 
+### 10.  `GameScore`
+# Create a class `Player` with attributes `username` and `high_score`. Add a method `update_score(new_score)` which updates the score only if `new_score` is higher.
+class Player:
+    def __init__(self, username, high_score, new_score = 0):
+        self.username = username
+        self.high_score = high_score
+    def update_score(self, new_score):
+        if new_score > self.high_score:
+            self.high_score = new_score
+            return f"Congratulations, you beat the high score. New Updated Score is {self.high_score}"
+        else:
+            self.high_score
+            return f"Failed to beat High-score by {self.high_score - new_score}, High Score: {self.high_score}"
+player1 = Player("Donovan", 100)
+print(f"{player1.username} high score is: {player1.high_score}")
+print(player1.update_score(101))
+
+
+### 11.  `StockTracker`
+# Create a class `Stock` with `company_name`, `current_price`, and `yesterday_price`. Add a method `has_increased()` to check whether the stock price increased.
+class Stock:
+    def __init__(self, company_name, current_price, yesterday_price):
+        self.company_name = company_name
+        self.current_price = current_price
+        self.yesterday_price = yesterday_price
+    def has_increased(self):
+        if self.current_price == self.yesterday_price:
+            return f"The stock price is same as yesterday. Stock Price: {self.current_price}"
+        elif self.current_price > self.yesterday_price:
+            return f"The stock price has increased by {self.current_price - self.yesterday_price}. Current-price: {self.current_price}"
+        elif self.current_price < self.yesterday_price:
+            return f"The stock price has decreased by {self.yesterday_price - self.current_price}. Current Price: {self.current_price}"
+stocktracker1 = Stock("Atlas", 100, 150)
+print(stocktracker1.has_increased())
+
+### 12.  `PizzaOrder`
+# Write a class `Pizza` with `size`, `toppings`, and `price`. Add a method `order_summary()` that returns a string summarizing the order.
+class Pizza:
+    def __init__(self, size, toppings, price):
+        self.size = size
+        self.toppings = toppings
+        self.price = price
+    def order_summary(self):
+        summary = "======= Order Summary =======\n"
+        summary += f"Size: {self.size}\n"
+        summary += f"Toppings: {self.toppings}\n"
+        summary += f"Price: {self.price}\n"
+        summary += "=========="
+        return summary
+pizzaOrder1 = Pizza("Medium", "Olives, Pineapple", 400)
+print(pizzaOrder1.order_summary())
+
+### 13.  `WishlistApp`
+# Create a `Wishlist` class where users can `add_item(item)` and view their current list. Don’t use `append()` — store items in a string for now to simplify.
+class Wishlist:
+    def __init__(self, user, items="Item1"):
+        self.user = user
+        self.items = items
+    def add_item(self, item):
+        self.items = self.items + ", " + item
+        return f"{self.user} Added new Item. Items: {self.items}"
+        
+wishlist1 = Wishlist("Donovan", "item1, item2")
+print(f"{wishlist1.add_item("item2")}")
+print(f"{wishlist1}")
+
+### 14.  `GoalTracker`
+# Create a class `Goal` with `description` and `completed` (Boolean). Add method `mark_complete()`
+class Goal:
+    def __init__(self, description, completed= False):
+        self.description = description
+        self.completed = completed
+    def mark_complete(self):
+        self.completed = True
+        return f"{self.description} is updated to {self.completed}"
+goal1 = Goal("Go to gym")
+print(f"{goal1.mark_complete()}")
+
 
 
 if __name__ == '__main__':
